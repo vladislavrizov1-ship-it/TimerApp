@@ -5,52 +5,52 @@ import java.util.TimerTask;
 
 public class TimerApp extends JFrame {
 
-    // Три таймера
+
     private Timer timer1;
     private Timer timer2;
     private Timer timer3;
 
-    // Счётчик секунд
+
     private int counter = 0;
 
-    // Элементы интерфейса
+
     private JLabel counterLabel;
     private JTextArea logArea;
 
     public TimerApp() {
 
-        // Настройка окна
+
         setTitle("Планировщик таймеров");
         setSize(550, 400);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new FlowLayout());
 
-        // Кнопки
+
         JButton startButton = new JButton("Запустить таймеры");
         JButton stopButton = new JButton("Остановить");
 
-        // Счётчик
+
         counterLabel = new JLabel("Счётчик: 0");
 
-        // Область вывода событий
+
         logArea = new JTextArea(15, 45);
         logArea.setEditable(false);
 
-        // Добавляем элементы в окно
+
         add(startButton);
         add(stopButton);
         add(counterLabel);
         add(new JScrollPane(logArea));
 
-        // Обработчики кнопок
+
         startButton.addActionListener(e -> startTimers());
         stopButton.addActionListener(e -> stopTimers());
     }
 
-    // Запуск всех таймеров
+
     private void startTimers() {
 
-        // Если таймеры уже работают, сначала остановим их
+
         stopTimers();
 
         counter = 0;
@@ -58,11 +58,6 @@ public class TimerApp extends JFrame {
 
         logArea.append("=== Таймеры запущены ===\n");
 
-        // =====================================================
-        // ТАЙМЕР 1
-        // Однократное действие через 5 секунд
-        // Используется schedule()
-        // =====================================================
 
         timer1 = new Timer();
 
@@ -77,18 +72,14 @@ public class TimerApp extends JFrame {
                         )
                 );
 
-                // После выполнения таймер больше не нужен
+
                 cancel();
             }
 
         }, 5000);
 
 
-        // =====================================================
-        // ТАЙМЕР 2
-        // Выполняет действие каждую секунду
-        // Используется scheduleAtFixedRate()
-        // =====================================================
+
 
         timer2 = new Timer();
 
@@ -116,11 +107,6 @@ public class TimerApp extends JFrame {
         }, 0, 1000);
 
 
-        // =====================================================
-        // ТАЙМЕР 3
-        // Через 10 секунд останавливает работу таймеров
-        // =====================================================
-
         timer3 = new Timer();
 
         timer3.schedule(new TimerTask() {
@@ -146,7 +132,7 @@ public class TimerApp extends JFrame {
     }
 
 
-    // Остановка всех таймеров
+
     private void stopTimers() {
 
         if (timer1 != null) {
@@ -166,7 +152,7 @@ public class TimerApp extends JFrame {
     }
 
 
-    // Запуск программы
+    
     public static void main(String[] args) {
 
         SwingUtilities.invokeLater(() -> {
