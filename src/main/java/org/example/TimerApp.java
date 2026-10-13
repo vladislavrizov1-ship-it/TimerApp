@@ -20,7 +20,7 @@ public class TimerApp extends JFrame {
     public TimerApp() {
 
 
-        setTitle("гитхаб");
+        setTitle("версия гитхаб");
         setSize(550, 400);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new FlowLayout());
